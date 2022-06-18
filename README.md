@@ -36,5 +36,7 @@ From the git repo :
     Replaced package `sysnet v0.1.0 (/home/mathieu/dev/sysnet)` with `sysnet v0.1.0 (/home/mathieu/dev/sysnet)` (executable `sysnet`)
 ```
 
-Make sure `~/.cargo/bin/sysnet` is in your `$PATH`.
+From crates.io : `cargo install sysnet`.
 
+
+Make sure `~/.cargo/bin/sysnet` is in your `$PATH`.

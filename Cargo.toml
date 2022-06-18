@@ -2,7 +2,9 @@
 name = "sysnet"
 version = "0.1.0"
 edition = "2021"
-
+description = "Tool to get system and network info for your machine"
+repository = "https://github.com/matteyeux/sysnet"
+license-file = "LICENSE"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
