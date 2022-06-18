@@ -1,6 +1,6 @@
 [package]
 name = "sysnet"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Tool to get system and network info for your machine"
 repository = "https://github.com/matteyeux/sysnet"
