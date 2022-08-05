@@ -1,5 +1,4 @@
 use ipnetwork::IpNetwork;
-use pnet_datalink;
 use sysinfo::{CpuExt, DiskExt, ProcessExt, System, SystemExt};
 
 pub struct Device {
@@ -49,6 +48,12 @@ pub struct Interface {
     version: u8,
 }
 
+impl Default for Device {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 /// Implementation for the struct Device.
 /// This one is used to get system and network info
 /// about the device.
@@ -63,8 +68,8 @@ impl Device {
         let os_version = format!("{} {}", sys.name().unwrap(), sys.os_version().unwrap());
 
         let systeminfo = SystemInfo {
-            hostname: sys.host_name().unwrap().clone(),
-            os_version: os_version,
+            hostname: sys.host_name().unwrap(),
+            os_version,
             kernel_version: sys.kernel_version().unwrap(),
             cores_nb: sys.cpus().len(),
             total_ram: sys.total_memory(),
@@ -133,9 +138,9 @@ impl Device {
 
         Self {
             systeminfo,
-            cpus: cpus,
-            disks: disks,
-            interfaces: interfaces,
+            cpus,
+            disks,
+            interfaces,
             sys,
         }
     }
@@ -162,12 +167,12 @@ impl Device {
 
     /// Print system information
     pub fn print_system_info(&mut self, do_tab: bool) {
-        let tab: String;
-        if do_tab {
-            tab = format!("   ");
+        let tab: String = if do_tab {
+            "   ".to_string()
         } else {
-            tab = format!("");
-        }
+            "".to_string()
+        };
+
         println!("{tab}Hosname: {}", self.systeminfo.hostname);
         println!("{tab}OS : {}", self.systeminfo.os_version);
         println!("{tab}kernel : {}", self.systeminfo.kernel_version);
@@ -191,7 +196,7 @@ impl Device {
             if iface.version != 6 {
                 println!("{}", iface.name);
             } else {
-                println!("");
+                println!();
             }
             println!("   {}/{}", iface.ip, iface.prefix);
             println!("   {}", iface.mac);
