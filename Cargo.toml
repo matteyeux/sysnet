@@ -12,5 +12,5 @@ sysinfo = "0.24.6"
 pnet  = "0.31.0"
 pnet_datalink = "0.31.0"
 ipnetwork = "0.19.0"
-clap = { version = "3.2.12", features = ["derive"] }
+clap = { version = "3.2.20", features = ["derive"] }
 
